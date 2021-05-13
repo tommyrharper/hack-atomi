@@ -17,8 +17,6 @@ const query = gql`
 `
 const url = 'https://graphql-pokemon2.vercel.app';
 
-const API_ENDPOINT = 'http://www.mocky.io/v2/5c62e7c33000004a00019b05';
-
 const App: React.FC = () => {
   const [response, loading, hasError] = useQuery(url, query);
 
@@ -29,22 +27,19 @@ const App: React.FC = () => {
   if (loading) return <div>Loading</div>
   if (hasError) return <div>Error</div>
 
+  if (Array.isArray(response.pokemons)) {
+      return (
+        <div>
+          {
+            response.pokemons.map((char: any) => (
+              <div key={char.id}>{char.name}</div>
+            ))
+          }
+        </div>
+      );
+  }
+
   return <div>Got response</div>
-
-  // if (response !== null && typeof response !== 'boolean') {
-  //   if (typeof response === 'object') {
-  //     return (
-  //       <div>
-  //         {
-  //           response.pokemons.map(char => (
-  //             <div>{char.name}</div>
-  //           ))
-  //         }
-  //       </div>
-  //     );
-  //   }
-  // }
-
 }
 
 export default App;
