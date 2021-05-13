@@ -18,28 +18,24 @@ const query = gql`
 const url = 'https://graphql-pokemon2.vercel.app';
 
 const App: React.FC = () => {
-  const [response, loading, hasError] = useQuery(url, query);
+  const [data, loading, hasError] = useQuery(url, query);
 
-  console.log(`response`, response);
   console.log(`loading`, loading);
   console.log(`hasError`, hasError);
-
+  console.log(`data`, data);
+  
   if (loading) return <div>Loading</div>
   if (hasError) return <div>Error</div>
 
-  if (Array.isArray(response.pokemons)) {
-      return (
-        <div>
-          {
-            response.pokemons.map((char: any) => (
-              <div key={char.id}>{char.name}</div>
-            ))
-          }
-        </div>
-      );
-  }
-
-  return <div>Got response</div>
+  return (
+    <div>
+      {
+        data.pokemons.map((char: any) => (
+          <div key={char.id}>{char.name}</div>
+        ))
+      }
+    </div>
+  );
 }
 
 export default App;
