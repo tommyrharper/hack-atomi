@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
-import { request, gql } from 'graphql-request'
+import { request } from 'graphql-request'
 import { atom, useAtom } from 'jotai';
 
 const newAtom = atom(null);
 
-const useQuery = (url: string, query: string) => {
+const useQuery = (url: string, query: string): [any, boolean, boolean] => {
   const [fetchData, setFetchData] = useState({
     loading: true,
     hasError: false,
