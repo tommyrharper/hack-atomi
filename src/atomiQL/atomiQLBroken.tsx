@@ -13,7 +13,7 @@ export const useQuery = async (url: string, query: string) => {
     (async () => {
       setFetchData({ ...fetchData, loading: true })
       try {
-        const res = await request(url, query).then(data => data.json());
+        const res = await request(url, query)
         setFetchData({ ...fetchData, loading: false, response: res })
       } catch (err) {
         setFetchData({ ...fetchData, loading: false, error: err })

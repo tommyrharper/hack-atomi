@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { request, gql } from 'graphql-request'
 import useQuery from './atomiQL/atomiQL';
+// import {useQuery} from './atomiQL/atomiQLBroken';
 // import useFetch from './atomiQL/test';
 
 const query = gql`
