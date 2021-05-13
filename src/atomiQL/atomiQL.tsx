@@ -15,10 +15,8 @@ const useQuery = (url: string, query: string) => {
 
   useEffect(() => {
     (async () => {
-      // setFetchData({ ...fetchData, loading: true });
       try {
         const result = await request(url, query)
-        setFetchData({ ...fetchData, loading: false });
         setAtom(result)
       } catch {
         setFetchData({ ...fetchData, loading: false, hasError: true });
@@ -26,6 +24,7 @@ const useQuery = (url: string, query: string) => {
     })()
   }, [url]);
 
+  if (atomData) return [atomData, false, hasError]
   return [atomData, loading, hasError];
 };
 
