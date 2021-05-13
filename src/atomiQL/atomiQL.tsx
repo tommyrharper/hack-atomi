@@ -3,28 +3,30 @@ import { useState, useEffect } from 'react';
 import { request, gql } from 'graphql-request'
 import { atom, useAtom } from 'jotai';
 
+const newAtom = atom(null);
+
 const useQuery = (url: string, query: string) => {
   const [fetchData, setFetchData] = useState({
-    response: null,
-    loading: false,
+    loading: true,
     hasError: false,
   });
-
-  const { response, loading, hasError } = fetchData;
+  const [atomData, setAtom] = useAtom(newAtom)
+  const { loading, hasError } = fetchData;
 
   useEffect(() => {
     (async () => {
-      setFetchData({ ...fetchData, loading: true });
+      // setFetchData({ ...fetchData, loading: true });
       try {
         const result = await request(url, query)
-        setFetchData({ ...fetchData, loading: false, response: result });
+        setFetchData({ ...fetchData, loading: false });
+        setAtom(result)
       } catch {
         setFetchData({ ...fetchData, loading: false, hasError: true });
       }
     })()
   }, [url]);
 
-  return [response, loading, hasError];
+  return [atomData, loading, hasError];
 };
 
 export default useQuery;
