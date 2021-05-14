@@ -4,8 +4,6 @@ import React from 'react';
 import './App.css';
 import { gql } from 'graphql-request'
 import useQuery from './atomiQL/atomiQL';
-// import {useQuery} from './atomiQL/atomiQLBroken';
-// import useFetch from './atomiQL/test';
 import { AppContext } from './atomiQL/atomiContext';
 
 const query = gql`
@@ -16,10 +14,9 @@ const query = gql`
     }
   }
 `
-const url = 'https://graphql-pokemon2.vercel.app';
 
 const App: React.FC = () => {
-  const [data, loading, hasError] = useQuery(url, query);
+  const [data, loading, hasError] = useQuery(query);
 
   console.log(`loading`, loading);
   console.log(`hasError`, hasError);

@@ -6,26 +6,25 @@ import { AppContext } from './atomiContext';
 
 const newAtom = atom(null);
 
-const useQuery = (url: string, query: string): [any, boolean, boolean] => {
+const useQuery = (query: string): [any, boolean, boolean] => {
   const [fetchData, setFetchData] = useState({
     loading: true,
     hasError: false,
   });
   const [atomData, setAtom] = useAtom(newAtom)
-  const { url: contextUrl } = useContext(AppContext)
-  console.log(`contextUrl`, contextUrl)
+  const { url } = useContext(AppContext)
   const { loading, hasError } = fetchData;
 
   useEffect(() => {
     (async () => {
       try {
-        const result = await request(contextUrl, query)
+        const result = await request(url, query)
         setAtom(result)
       } catch {
         setFetchData({ ...fetchData, loading: false, hasError: true });
       }
     })()
-  }, [url]);
+  }, []);
 
   return [atomData, !atomData, hasError]
 };
