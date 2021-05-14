@@ -3,17 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AppContext } from './atomiQL/atomiContext';
+import { AtomiProvider } from './atomiQL/atomiContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppContext.Provider value={{
-      lang: 'de',
-      authenticated: true,
-      theme: 'light'
-    }}>
+    <AtomiProvider url="boom.com">
       <App />
-    </AppContext.Provider>
+    </AtomiProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

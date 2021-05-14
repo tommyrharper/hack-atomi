@@ -36,7 +36,7 @@ const App: React.FC = () => {
               <div key={char.id}>{char.name}</div>
             ))
           }
-          <div>{context.lang}</div>
+          <div>{context.url}</div>
         </div>)}
     </AppContext.Consumer>
   );
