@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { request } from 'graphql-request'
 import { atom, useAtom } from 'jotai';
 import { AppContext } from './atomiContext';
@@ -12,12 +12,14 @@ const useQuery = (url: string, query: string): [any, boolean, boolean] => {
     hasError: false,
   });
   const [atomData, setAtom] = useAtom(newAtom)
+  const { url: contextUrl } = useContext(AppContext)
+  console.log(`contextUrl`, contextUrl)
   const { loading, hasError } = fetchData;
 
   useEffect(() => {
     (async () => {
       try {
-        const result = await request(url, query)
+        const result = await request(contextUrl, query)
         setAtom(result)
       } catch {
         setFetchData({ ...fetchData, loading: false, hasError: true });

@@ -5,9 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AtomiProvider } from './atomiQL/atomiContext';
 
+const url = 'https://graphql-pokemon2.vercel.app';
+
 ReactDOM.render(
   <React.StrictMode>
-    <AtomiProvider url="boom.com">
+    <AtomiProvider url={url}>
       <App />
     </AtomiProvider>
   </React.StrictMode>,
