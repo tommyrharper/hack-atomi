@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { request } from 'graphql-request'
 import { atom, useAtom } from 'jotai';
+import { AppContext } from './atomiContext';
 
 const newAtom = atom(null);
 
@@ -24,8 +25,7 @@ const useQuery = (url: string, query: string): [any, boolean, boolean] => {
     })()
   }, [url]);
 
-  if (atomData) return [atomData, false, hasError]
-  return [atomData, loading, hasError];
+  return [atomData, !atomData, hasError]
 };
 
 export default useQuery;
