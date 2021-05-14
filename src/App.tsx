@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import { request, gql } from 'graphql-request'
+import { gql } from 'graphql-request'
 import useQuery from './atomiQL/atomiQL';
 // import {useQuery} from './atomiQL/atomiQLBroken';
 // import useFetch from './atomiQL/test';
