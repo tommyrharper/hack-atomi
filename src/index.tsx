@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AppContext } from './atomiQL/atomiContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppContext.Provider value={{
+      lang: 'de',
+      authenticated: true,
+      theme: 'light'
+    }}>
+      <App />
+    </AppContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

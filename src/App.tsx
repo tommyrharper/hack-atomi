@@ -6,6 +6,7 @@ import { gql } from 'graphql-request'
 import useQuery from './atomiQL/atomiQL';
 // import {useQuery} from './atomiQL/atomiQLBroken';
 // import useFetch from './atomiQL/test';
+import { AppContext } from './atomiQL/atomiContext';
 
 const query = gql`
   query {
@@ -28,13 +29,16 @@ const App: React.FC = () => {
   if (hasError) return <div>Error</div>
 
   return (
-    <div>
-      {
-        data.pokemons.map((char: any) => (
-          <div key={char.id}>{char.name}</div>
-        ))
-      }
-    </div>
+    <AppContext.Consumer>
+        {(context) => (<div>
+          {
+            data.pokemons.map((char: any) => (
+              <div key={char.id}>{char.name}</div>
+            ))
+          }
+          <div>{context.lang}</div>
+        </div>)}
+    </AppContext.Consumer>
   );
 }
 
