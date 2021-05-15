@@ -4,14 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AtomiProvider } from './atomiQL/atomiContext';
+import { thing } from 'typescript-package'
 
 const url = 'https://graphql-pokemon2.vercel.app';
+
+function NewComponent() {
+  const data = thing(1)
+  return <div>{data}</div>
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <AtomiProvider url={url}>
       <App />
     </AtomiProvider>
+    <NewComponent />
   </React.StrictMode>,
   document.getElementById('root')
 );
