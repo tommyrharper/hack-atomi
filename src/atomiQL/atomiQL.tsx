@@ -3,6 +3,7 @@ import { useEffect, useContext } from 'react';
 import { request } from 'graphql-request'
 import { atom, useAtom } from 'jotai';
 import { AppContext } from './atomiContext';
+import { isThisTypeNode } from 'typescript';
 
 const newAtom = atom({
   loading: true,

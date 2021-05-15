@@ -5,6 +5,7 @@ import './App.css';
 import { gql } from 'graphql-request'
 import useQuery from './atomiQL/atomiQL';
 import { AppContext } from './atomiQL/atomiContext';
+import { thing } from 'typescript-package'
 
 const query = gql`
   query {
@@ -17,6 +18,8 @@ const query = gql`
 
 const App: React.FC = () => {
   const [data, loading, hasError] = useQuery(query);
+  // console.log('THIS IS',thing('thing'))
+  thing(5)
 
   console.log(`loading`, loading);
   console.log(`hasError`, hasError);
