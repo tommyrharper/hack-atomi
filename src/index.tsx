@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AtomiProvider } from './atomiQL/atomiContext';
+// import { AtomiProvider } from './atomiQL/atomiContext';
+import {AtomiProvider} from 'typescript-package';
+
+console.log(`AtomiProvider`, AtomiProvider)
 
 const url = 'https://graphql-pokemon2.vercel.app';
 
