@@ -5,7 +5,7 @@ import './App.css';
 import { gql } from 'graphql-request'
 import useQuery from './atomiQL/atomiQL';
 import { AppContext } from './atomiQL/atomiContext';
-import { thing } from 'typescript-package'
+import { thing } from 'typescript-package';
 
 const query = gql`
   query {
