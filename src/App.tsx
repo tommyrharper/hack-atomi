@@ -2,9 +2,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import './App.css';
-import { gql } from 'graphql-request'
-import useQuery from './atomiQL/atomiQL';
-import { AppContext } from './atomiQL/atomiContext';
+import { gql } from 'graphql-request';
+// import useQuery from './atomiQL/atomiQL';
+// import { AppContext } from './atomiQL/atomiContext';
+import { useQuery } from 'AtomiQL';
 
 const query = gql`
   query {
@@ -26,16 +27,13 @@ const App: React.FC = () => {
   if (hasError) return <div>Error</div>
 
   return (
-    <AppContext.Consumer>
-        {(context) => (<div>
-          {
-            data.pokemons.map((char: any) => (
-              <div key={char.id}>{char.name}</div>
-            ))
-          }
-          <div>{context.url}</div>
-        </div>)}
-    </AppContext.Consumer>
+    <div>
+      {
+        data.pokemons.map((char: any) => (
+          <div key={char.id}>{char.name}</div>
+        ))
+      }
+    </div>
   );
 }
 
