@@ -2,10 +2,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import './App.css';
-import { gql } from 'graphql-request'
-import useQuery from './atomiQL/atomiQL';
-import { AppContext } from './atomiQL/atomiContext';
-import { thing } from 'typescript-package';
+import { gql } from 'graphql-request';
+// import useQuery from './atomiQL/atomiQL';
+// import { AppContext } from './atomiQL/atomiContext';
+import { useQuery } from 'AtomiQL';
 
 const query = gql`
   query {
@@ -18,8 +18,6 @@ const query = gql`
 
 const App: React.FC = () => {
   const [data, loading, hasError] = useQuery(query);
-  // console.log('THIS IS',thing('thing'))
-  thing(5)
 
   console.log(`loading`, loading);
   console.log(`hasError`, hasError);
@@ -29,16 +27,13 @@ const App: React.FC = () => {
   if (hasError) return <div>Error</div>
 
   return (
-    <AppContext.Consumer>
-        {(context) => (<div>
-          {
-            data.pokemons.map((char: any) => (
-              <div key={char.id}>{char.name}</div>
-            ))
-          }
-          <div>{context.url}</div>
-        </div>)}
-    </AppContext.Consumer>
+    <div>
+      {
+        data.pokemons.map((char: any) => (
+          <div key={char.id}>{char.name}</div>
+        ))
+      }
+    </div>
   );
 }
 

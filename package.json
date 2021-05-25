@@ -10,6 +10,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "AtomiQL": "file:../AtomiQL",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "jotai": "^0.16.4",
@@ -17,7 +18,6 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
-    "typescript-package": "file:../typescript-package",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
